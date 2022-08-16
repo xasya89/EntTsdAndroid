@@ -1,6 +1,7 @@
 package com.example.enttsd.fragments
 
 import android.os.Bundle
+import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,6 +34,13 @@ class LoginFragment : Fragment() {
             parentFragmentManager.commit {
                 replace(R.id.fragmentContainerView, MenuFragment.newInstance())
             }
+        })
+        binding.loginCardNumber.setOnKeyListener(View.OnKeyListener{_, code, event ->
+            if (code == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                loginViewModel.getLogin(binding.loginCardNumber.text.toString())
+                return@OnKeyListener true
+            }
+            false
         })
         binding.loginBtn.setOnClickListener {
             loginViewModel.getLogin(binding.loginCardNumber.text.toString())

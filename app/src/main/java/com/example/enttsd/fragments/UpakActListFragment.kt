@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.commit
 import com.example.enttsd.R
-import com.example.enttsd.databinding.FragmentMenuBinding
+import com.example.enttsd.databinding.FragmentUpakActListBinding
+import com.example.enttsd.models.LoginModel
 import com.example.enttsd.viewmodels.LoginRepository
 
-class MenuFragment : Fragment() {
-
-    private lateinit var binding: FragmentMenuBinding
+class UpakActListFragment : Fragment() {
+    private lateinit var binding:FragmentUpakActListBinding
     private val loginRepository : LoginRepository by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,14 +24,10 @@ class MenuFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMenuBinding.inflate(inflater)
-        loginRepository.loginModel.observe(viewLifecycleOwner,{
-            binding.menuUserFio.setText(it.postName)
-
-        })
-        binding.btnTransitionToUpakList.setOnClickListener {
+        binding = FragmentUpakActListBinding.inflate(inflater)
+        binding.btnAddUpakAct.setOnClickListener {
             parentFragmentManager.commit {
-                replace(R.id.fragmentContainerView,UpakActListFragment.newInstance())
+                replace(R.id.fragmentContainerView, UpakActFragment.newInstance())
             }
         }
         return binding.root
@@ -40,6 +36,6 @@ class MenuFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() =
-            MenuFragment().apply {}
+            UpakActListFragment().apply { }
     }
 }

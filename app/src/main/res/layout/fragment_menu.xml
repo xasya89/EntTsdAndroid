@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/menuUserFio" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnTransitionToUpakList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:width="200dp"
@@ -46,6 +46,6 @@
         android:text="Статистика"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/btnTransitionToUpakList" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

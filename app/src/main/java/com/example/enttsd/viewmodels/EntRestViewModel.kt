@@ -36,8 +36,6 @@ class EntRestViewModel:ViewModel() {
 
 
     fun getLogin(cardNumber:String) {
-        val responseLiveData: MutableLiveData<LoginModel> = MutableLiveData()
-
         val request: Call<LoginModel> = api.getLogin(LoginModel(0,0,"","",cardNumber))
         request.enqueue(object : Callback<LoginModel> {
             override fun onResponse(call: Call<LoginModel>, response: Response<LoginModel>) {
