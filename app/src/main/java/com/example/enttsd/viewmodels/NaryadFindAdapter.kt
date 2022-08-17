@@ -9,22 +9,21 @@ import com.example.enttsd.databinding.NaryadFindItemBinding
 import com.example.enttsd.models.NaryadModel
 
 
-class NaryadFindAdapter(private val checkedEvent:(naryad:NaryadModel)->Unit) :RecyclerView.Adapter<NaryadFindAdapter.NaryadFindHolder>() {
+class NaryadFindAdapter(private val checkedEvent:(naryad:NaryadModel, addFlag: Boolean)->Unit) :RecyclerView.Adapter<NaryadFindAdapter.NaryadFindHolder>() {
     var naryadList = ArrayList<NaryadModel>()
-    class NaryadFindHolder(private val checkedEvent:(naryad:NaryadModel)->Unit, item:View):RecyclerView.ViewHolder(item){
+    class NaryadFindHolder(private val checkedEvent:(naryad:NaryadModel, addFlag: Boolean)->Unit, item:View):RecyclerView.ViewHolder(item){
         val binding = NaryadFindItemBinding.bind(item)
         fun bind(naryad: NaryadModel) = with(binding){
             tvTitleNaryadFindItem.text=naryad.numInOrder.toString()
             tvNoteNaryadFindItem.text = naryad.shet
             binding.btnChNaryadFindItem.setOnClickListener {
                 naryad.isChacked=!naryad.isChacked
-                checkedEvent(naryad)
+                checkedEvent(naryad, naryad.isChacked)
                 if(naryad.isChacked)
                     binding.btnChNaryadFindItem.setBackgroundResource(R.drawable.ic_baseline_check_circle_24)
                 else
                     binding.btnChNaryadFindItem.setBackgroundResource(R.drawable.ic_baseline_check_circle_outline_24)
             }
-
         }
     }
 

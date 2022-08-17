@@ -15,7 +15,7 @@ class UpakActFragment : Fragment() {
     private var idAct: Int? = null
     private lateinit var binding : FragmentUpakActBinding
     private val loginRepository : LoginRepository by activityViewModels()
-    private val fragmentList = listOf(UpakEditFragment.newInstance("",""), NaryadFindFragment.newInstance())
+    private val fragmentList = listOf(UpakEditFragment.newInstance(), NaryadFindFragment.newInstance())
     private val tabItems = listOf("Сканирование", "Поиск")
 
     override fun onCreate(savedInstanceState: Bundle?) {

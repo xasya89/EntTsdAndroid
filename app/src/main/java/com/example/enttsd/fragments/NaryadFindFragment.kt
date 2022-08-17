@@ -19,7 +19,12 @@ import com.example.enttsd.viewmodels.UpakViewModel
 
 class NaryadFindFragment : Fragment() {
     private lateinit var binding: FragmentNaryadFindBinding
-    private val adapter = NaryadFindAdapter{naryad -> Toast.makeText(context, naryad.numInOrder, Toast.LENGTH_LONG).show() }
+    private val adapter = NaryadFindAdapter{naryad, addFlag ->
+        if(addFlag)
+            upakViewModel.addSearchNaryad(naryad)
+        else
+            upakViewModel.deleteSearchNaryad(naryad)
+    }
     private val upakViewModel:UpakViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
